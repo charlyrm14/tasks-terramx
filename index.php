@@ -13,7 +13,13 @@ switch ($uri) {
     break;
 
     case '/add':
-        require VIEWS_PATH . '/add.php';
+        $controller = new TaskController();
+        $controller->add();
+    break;
+
+    case '/create':
+        $controller = new TaskController();
+        $controller->create();
     break;
 
     default:

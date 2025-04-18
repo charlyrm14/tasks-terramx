@@ -20,4 +20,52 @@ class TaskController {
         require VIEWS_PATH . '/home.php';
     }
     
+    public function add()
+    {
+        $error = [];
+        require VIEWS_PATH . '/add.php';
+    }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Valida que la petición se haya enviado a través del método POST
+            
+            $task_name = $_POST['task_name'];
+            $description = $_POST['description'];
+            $error = [];
+
+            /**
+             * Validación formulario
+            */
+            if(empty($task_name) || empty($description)) {
+                $error['task_name'] = 'El nombre de la tarea es obligatorio';
+                $error['description'] = 'La descripción de la tarea es obligatorio';
+                require VIEWS_PATH . '/add.php';
+            } 
+
+            /**
+             * Crea nueva tarea
+             */
+            try {
+                
+                $task = new Task();
+                $task->insert($task_name, $description);
+
+            } catch (Exception $e) {
+                header("Location: /add");
+            }
+            
+            header("Location: /");
+            exit;  
+
+        } else {
+
+            /**
+             * Si se accede directamente por URL reedirige a página de inicio
+             */
+
+            header("Location: /");
+            exit;
+        }
+    }
 }
