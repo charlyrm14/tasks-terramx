@@ -2,6 +2,22 @@
 
 Administración de tareas
 
+## Tecnologías utilizadas
+
+- PHP (nativo)
+- MySQL
+- JavaScript
+- Tailwind CSS
+- HTML5
+- CSS3
+
+## Funcionalidades
+
+- Crear tareas
+- Editar tareas
+- Eliminar tareas
+- Comunicación frontend/backend vía AJAX
+
 ### Pre-requisitos 📋
 
 - PHP >= 8.1.29
