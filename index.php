@@ -1,13 +1,15 @@
 <?php
 
 require 'config/database.php';
+require 'app/Controllers/TaskController.php';
 
 define('VIEWS_PATH', __DIR__ . '/app/Views');
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($uri) {
     case '/':
-        require VIEWS_PATH . '/home.php';
+        $controller = new TaskController();
+        $controller->home();
     break;
 
     case '/add':
