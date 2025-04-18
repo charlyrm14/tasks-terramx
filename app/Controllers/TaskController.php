@@ -148,4 +148,36 @@ class TaskController {
             exit;
         }
     }
+
+    public function delete(int $id)
+    {
+        header('Content-Type: application/json');
+
+        $model = new Task();
+        $task = $model->getTaskById($id);
+
+        if (!$task) {
+            echo json_encode([
+                'message' => 'Recurso no encontrado',
+                'code' => 404,
+            ]);
+            return;
+        }
+
+        try {
+
+            $delete_task = new Task();
+            $delete_task->deleteTaskById($task['id']);
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+        echo json_encode([
+            'status' => 'success',
+            'code' => 200,
+        ]);
+
+        return;
+    }
 }

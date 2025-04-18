@@ -70,8 +70,15 @@ class Task {
         $stmt->bindParam(':task_name', $task_name); // Vincula la variable task_name con la columna de la tabla
         $stmt->bindParam(':description', $description); // Vincula la variable description con la columna de la tabla
         $stmt->bindParam(':status', $status); // Vincula la variable status con la columna de la tabla
-        $stmt->bindParam(':id', $id,  PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id,  PDO::PARAM_INT); // Asegura que el id se trate como entero.
 
         return $stmt->execute(); // Devuelve true si fue exitoso
+    }
+
+    public function deleteTaskById(int $id)
+    {
+        $stmt = $this->db->prepare("DELETE FROM tasks WHERE id = :id");
+        $stmt->bindParam(':id', $id,  PDO::PARAM_INT);
+        return $stmt->execute();
     }
 }

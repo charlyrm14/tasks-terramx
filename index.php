@@ -50,6 +50,28 @@ switch ($uri) {
 
     break;
 
+    case '/delete':
+        
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+
+        header('Content-Type: application/json');
+
+        if ($id) {
+            
+            $controller = new TaskController();
+            $controller->delete($id);
+
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Recurso no encontrado',
+                'code' => 404,
+            ]);
+            return;
+        }
+
+    break;
+
     default:
         require VIEWS_PATH . '/404.php';
     break;
