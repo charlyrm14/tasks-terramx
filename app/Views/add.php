@@ -32,6 +32,10 @@
                         placeholder="Ej: Sitio web"
                         class="mt-3 w-full px-2 p-3 border border-gray-300 rounded-lg"
                         required/>
+
+                    <?php if(isset($error['task_name'])):  ?>
+                        <span class="text-red-500 mt-3 px-2"> <?= $error['task_name'] ?> </span>
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-5">
@@ -42,6 +46,9 @@
                         placeholder="Agrega información detallada de tu tarea"
                         class="mt-3 w-full px-2 p-3 border border-gray-300 rounded-lg"
                         required></textarea>
+                    <?php if(isset($error['description'])):  ?>
+                        <span class="text-red-500 mt-3 px-2"> <?= $error['description'] ?> </span>
+                    <?php endif; ?>
                 </div>
 
                 <div class="flex justify-between items-center mt-7">
