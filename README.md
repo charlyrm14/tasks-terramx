@@ -28,4 +28,4 @@ CREATE TABLE terra_mx.tasks (
 
 ## Autores ✒️
 
-* **Carlos I. Ramos Morales** -  [charlyrm14]([https://github.com/villanuevand](https://github.com/charlyrm14))
+* **Carlos I. Ramos Morales** 
